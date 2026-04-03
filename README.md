@@ -1,20 +1,13 @@
-# E-commerce App (Lab 0 - Level 1)
+# E-Commerce App - Lab 0
 
-## One-Command Build
-Проєкт використовує `requirements.txt`. Тести запускаються однією командою:
-`pytest`
-
-## Конфігурація через середовище (Env Vars)
-Застосунок використовує наступні змінні оточення:
-* `DB_HOST`
-* `DB_PORT`
-* `DB_NAME`
-* `DB_USER`
-* `DB_PASSWORD`
-
-## Автоматичне керування схемою БД
-<<<<<<< HEAD
-Проєкт використовує `alembic`. Під час старту застосунок (FastAPI lifespan) автоматично виконує команду `alembic upgrade head`, застосовуючи всі наявні міграції до бази даних.
-=======
-Проєкт використовує `alembic`. Під час старту застосунок (FastAPI lifespan) автоматично виконує команду `alembic upgrade head`, застосовуючи всі наявні міграції до бази даних.
->>>>>>> 9a2091f (feat: complete Lab 0 Level 1 - commerce ready app)
+## Рівень 1 (Phase 1)
+✅ **One-Command Build:** Тести запускаються командою `pytest`. Залежності зібрані в `requirements.txt` (`pip install -r requirements.txt`).
+✅ **12-Factor App (Environment Variables):** Конфігурація бази даних зчитується зі змінних оточення.
+Обов'язкові змінні для підключення PostgreSQL (див. `app/database.py`):
+- `DB_HOST`
+- `DB_PORT`
+- `DB_NAME`
+- `DB_USER`
+- `DB_PASSWORD`
+*(Якщо змінні відсутні, застосунок безпечно перемикається на локальний SQLite).*
+✅ **Автоматичні міграції:** Використовується `Alembic`. Міграції застосовуються автоматично до бази даних під час старту FastAPI (через `lifespan`).
