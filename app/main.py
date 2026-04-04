@@ -4,16 +4,16 @@ import subprocess
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-
     print("Автоматичний запуск міграцій бази даних (Alembic)...")
     try:
 
         subprocess.run(["alembic", "upgrade", "head"], check=True)
         print("Міграції успішно застосовані!")
     except Exception as e:
-        print(f"Помилка міграцій: {e}")
 
-    yield  # Сервер працює
+        print(f"⚠️ Помилка міграцій (ігноруємо для тестів): {e}")
+
+    yield
 
 
 app = FastAPI(lifespan=lifespan)

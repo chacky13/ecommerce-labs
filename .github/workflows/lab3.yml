@@ -2,7 +2,7 @@ name: Lab 3 K8s Deployment
 
 on:
   push:
-    branches: [ lab3 ]
+    branches: [ lab2, main, lab3 ]
 
 jobs:
   k8s-test:
