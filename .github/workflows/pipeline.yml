@@ -37,8 +37,6 @@ jobs:
           tags: |
             type=raw,value=latest
             type=raw,value=${{ steps.vars.outputs.sha_short }}
-          flavor: |
-            lower=true
 
       - name: Build Docker image
         uses: docker/build-push-action@v5
