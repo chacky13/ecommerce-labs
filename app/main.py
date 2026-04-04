@@ -1,19 +1,23 @@
-import subprocess
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
+import subprocess
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("Автоматичний запуск міграцій бази даних...")
+    # Автоматичний запуск міграцій при старті
+    print("Автоматичний запуск міграцій бази даних (Alembic)...")
     try:
-        # Це те саме, що написати "alembic upgrade head" у терміналі
         subprocess.run(["alembic", "upgrade", "head"], check=True)
-        print("Міграції успішно застосовані.")
+        print("Міграції успішно застосовані!")
     except Exception as e:
         print(f"Помилка міграцій: {e}")
-    yield # Тут сервер працює і приймає запити
+
+    yield  # Сервер працює
+
 
 app = FastAPI(lifespan=lifespan)
+
 
 @app.get("/")
 def read_root():
