@@ -4,3 +4,5 @@ sqlalchemy==2.0.23
 alembic==1.12.1
 pytest==7.4.3
 httpx==0.25.1
+psycopg2-binary
+python-json-logger
